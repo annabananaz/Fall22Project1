@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\player.cs" />
+     <Compile Include="Assets\Item.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/home/jaden/Unity/Hub/Editor/2021.1.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

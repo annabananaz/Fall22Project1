@@ -36,7 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\player.cs" />
+     <Compile Include="Assets\Player.cs" />
      <Compile Include="Assets\Item.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/home/jaden/Unity/Hub/Editor/2021.1.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -653,17 +653,11 @@
     <Reference Include="Unity.VisualScripting.Flow">
         <HintPath>/home/jaden/Unity/Projects/Fall22Project1/Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-        <HintPath>/home/jaden/Unity/Projects/Fall22Project1/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
         <HintPath>/home/jaden/Unity/Projects/Fall22Project1/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
         <HintPath>/home/jaden/Unity/Projects/Fall22Project1/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-        <HintPath>/home/jaden/Unity/Projects/Fall22Project1/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
         <HintPath>/home/jaden/Unity/Projects/Fall22Project1/Library/ScriptAssemblies/Unity.VisualScripting.State.dll</HintPath>
@@ -673,6 +667,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{43f2294a-81c5-bb84-2c70-dad786868d39}</Project>
+      <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{e7a51c3e-a4fb-00be-8239-87698a6b6b01}</Project>
+      <Name>UnityEngine.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

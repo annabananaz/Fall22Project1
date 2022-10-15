@@ -19,11 +19,10 @@ public class Player : MonoBehaviour
     private float gravityValue = -9.81f;
 
     //used to track if player is holding/observing item
-    private bool holding = false;
-    public bool seeClue = false;
+    public static bool holding = false;
 
     public Transform hand;
-    private Transform heldItem;
+    public static Transform heldItem;
 
     // Start is called before the first frame update
     void Start()
@@ -49,9 +48,9 @@ public class Player : MonoBehaviour
             else{
                 RaycastHit hit;
                 if(Physics.Raycast(hand.position, hand.forward, out hit, 5f, 1 << LayerMask.NameToLayer("Item"))){
-                    heldItem = hit.transform; 
-                    heldItem.SendMessage("Pickup");
+                    heldItem = hit.transform;
                     holding = true;
+                    heldItem.SendMessage("Pickup");
                 }
             }
         }
@@ -86,7 +85,11 @@ public class Player : MonoBehaviour
             playerVelocity.z = move.z;
 
             controller.Move(playerVelocity * Time.deltaTime);
+
+            RaycastHit hit;
+            if(Physics.Raycast(hand.position, hand.forward, out hit, 5f, 1 << LayerMask.NameToLayer("Item"))){
+                hit.transform.SendMessage("DoOutline");
+            }
         }
-        seeClue = false;
     }
 }

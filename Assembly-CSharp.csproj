@@ -38,6 +38,10 @@
   <ItemGroup>
      <Compile Include="Assets\Player.cs" />
      <Compile Include="Assets\Item.cs" />
+     <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
+     <None Include="Assets\QuickOutline\Resources\Shaders\OutlineMask.shader" />
+     <None Include="Assets\QuickOutline\Readme.txt" />
+     <None Include="Assets\QuickOutline\Resources\Shaders\OutlineFill.shader" />
     <Reference Include="UnityEngine">
         <HintPath>/home/jaden/Unity/Hub/Editor/2021.1.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

@@ -22,7 +22,8 @@ public class Item : MonoBehaviour
     {
         startPos = transform.position;
         startRot = transform.rotation;
-        gameObject.layer = LayerMask.NameToLayer("Item");
+        gameObject.layer = LayerMask.NameToLayer("Interactable");
+        gameObject.tag = "Holdable";
 
         //gives object outline for interaction clue
         outline = gameObject.AddComponent<Outline>();
@@ -31,26 +32,27 @@ public class Item : MonoBehaviour
         outline.OutlineWidth = 10f;
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        Vector3 handPos = Player.player.hand.position;
+
         if(lerpTime <= 1f){
             if(atStart){
                 transform.position = Vector3.Lerp(transform.position, startPos, lerpTime);
                 transform.rotation = Quaternion.Lerp(transform.rotation, startRot, lerpTime);
             }
             else{
-                transform.position = Vector3.Lerp(transform.position, Player.player.hand.position, lerpTime);
+                transform.position = Vector3.Lerp(transform.position, handPos, lerpTime);
             }
             lerpTime += Time.deltaTime;
         }
 
         if(!atStart){
             RaycastHit hit;
-            if(Physics.Raycast(clueSpot.position, clueSpot.position - transform.position, out hit, 1f, 1 << LayerMask.NameToLayer("Player"))){
+            if(Physics.Raycast(clueSpot.position, clueSpot.position - transform.position, out hit, 0.6f, 1 << LayerMask.NameToLayer("Player"))){
                 if(Input.GetMouseButtonDown(1)){
                     seenClues++;
                     clueSeen = true;
-                    kickOut();
                     Return();
                 }
             }
@@ -72,23 +74,20 @@ public class Item : MonoBehaviour
             lerpTime = 0f;
         }
         else{
-            kickOut();
+            Return();
         }
     }
 
     public void Return(){
         atStart = true;
         lerpTime = 0f;
+        Player.holding = false;
+        Player.heldItem = null;
     }
 
     public void DoOutline(){
         if(!clueSeen){
             isOutlined = true;
         }
-    }
-
-    private void kickOut(){
-        Player.holding = false;
-        Player.heldItem = null;
     }
 }
